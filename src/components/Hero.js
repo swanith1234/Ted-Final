@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const calculateTimeLeft = () => {
@@ -44,7 +44,8 @@ const Hero = () => {
           "Uncharted Waters"
         </p>
         <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-6">
-          Exploring the unknown—where curiosity meets courage, and challenges lead to discovery.
+          Exploring the unknown—where curiosity meets courage, and challenges
+          lead to discovery.
         </p>
 
         {/* Event Date & Venue */}
@@ -55,8 +56,14 @@ const Hero = () => {
         {/* Countdown Timer */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-lg font-bold text-red-500 mb-6">
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="p-2 bg-white text-black rounded-lg shadow-md min-w-[70px] text-center">
-              {value} <span className="text-sm block">{unit.charAt(0).toUpperCase() + unit.slice(1)}</span>
+            <div
+              key={unit}
+              className="p-2 bg-white text-black rounded-lg shadow-md min-w-[70px] text-center"
+            >
+              {value}{" "}
+              <span className="text-sm block">
+                {unit.charAt(0).toUpperCase() + unit.slice(1)}
+              </span>
             </div>
           ))}
         </div>
@@ -65,7 +72,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 w-full">
           <motion.div whileHover={{ scale: 1.1 }} className="w-full sm:w-auto">
             <Link
-              to="/register"
+              to="/passes"
               className="bg-red-500 text-white w-full sm:w-auto text-center py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg block"
               aria-label="Register Now"
             >
@@ -75,7 +82,7 @@ const Hero = () => {
 
           <motion.div whileHover={{ scale: 1.1 }} className="w-full sm:w-auto">
             <Link
-              to="/sponsor"
+              to="/partners"
               className="bg-transparent border border-red-500 text-red-500 w-full sm:w-auto text-center py-3 px-6 rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-300 shadow-lg block"
               aria-label="Become a Sponsor"
             >
