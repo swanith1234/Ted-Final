@@ -1,6 +1,6 @@
-import React from 'react';
-import { FaInstagram, FaPhoneAlt, FaEnvelope, FaGlobe } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from "react";
+import { FaInstagram, FaPhoneAlt, FaEnvelope, FaGlobe } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const fadeIn = {
@@ -16,25 +16,34 @@ const Footer = () => {
       viewport={{ once: true }}
       variants={fadeIn}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 position-absolute bottom-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center">
           {/* Contact Information */}
-          <motion.div
-            className="text-center md:text-left"
-            variants={fadeIn}
-          >
-            <h4 className="text-2xl font-semibold mb-4 text-red-500">Contact Us</h4>
+          <motion.div className="text-center md:text-left" variants={fadeIn}>
+            <h4 className="text-2xl font-semibold mb-4 text-red-500">
+              Contact Us
+            </h4>
             <div className="space-y-3">
               <p className="text-sm flex justify-center md:justify-start items-center">
                 <FaPhoneAlt className="mr-2" />
                 <span>Phone:</span>
-                <a href="tel:+916300187268" className="hover:underline ml-2">+91 6300187268</a>,
-                <a href="tel:+917093135378" className="hover:underline ml-2">+91 7093135378</a>
+                <a href="tel:+916300187268" className="hover:underline ml-2">
+                  +91 6300187268
+                </a>
+                ,
+                <a href="tel:+917093135378" className="hover:underline ml-2">
+                  +91 7093135378
+                </a>
               </p>
               <p className="text-sm flex justify-center md:justify-start items-center">
                 <FaEnvelope className="mr-2" />
                 <span>Email:</span>
-                <a href="mailto:tedxsvu10@gmail.com" className="hover:underline ml-2">tedxsvu10@gmail.com</a>
+                <a
+                  href="mailto:tedxsvu10@gmail.com"
+                  className="hover:underline ml-2"
+                >
+                  tedxsvu10@gmail.com
+                </a>
               </p>
               <p className="text-sm flex justify-center md:justify-start items-center">
                 <FaGlobe className="mr-2" />
@@ -52,11 +61,10 @@ const Footer = () => {
           </motion.div>
 
           {/* Social Media Links */}
-          <motion.div
-            className="text-center"
-            variants={fadeIn}
-          >
-            <h4 className="text-2xl font-semibold mb-4 text-red-500">Follow Us</h4>
+          <motion.div className="text-center" variants={fadeIn}>
+            <h4 className="text-2xl font-semibold mb-4 text-red-500">
+              Follow Us
+            </h4>
             <a
               href="https://instagram.com/tedxsvu"
               target="_blank"
