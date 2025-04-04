@@ -68,25 +68,15 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Fixed CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 w-full">
-          <motion.div whileHover={{ scale: 1.1 }} className="w-full sm:w-auto">
+        {/* Register Now Button */}
+        <div className="flex justify-center w-full mt-6">
+          <motion.div whileHover={{ scale: 1.1 }}>
             <Link
               to="/passes"
-              className="bg-red-500 text-white w-full sm:w-auto text-center py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg block"
+              className="bg-red-500 text-white text-center py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg block w-full sm:w-auto"
               aria-label="Register Now"
             >
               Register Now
-            </Link>
-          </motion.div>
-
-          <motion.div whileHover={{ scale: 1.1 }} className="w-full sm:w-auto">
-            <Link
-              to="/partners"
-              className="bg-transparent border border-red-500 text-red-500 w-full sm:w-auto text-center py-3 px-6 rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-300 shadow-lg block"
-              aria-label="Become a Sponsor"
-            >
-              Become a Sponsor
             </Link>
           </motion.div>
         </div>

@@ -27,8 +27,8 @@ const Footer = () => {
               <p className="text-sm flex justify-center md:justify-start items-center">
                 <FaPhoneAlt className="mr-2" />
                 <span>Phone:</span>
-                <a href="tel:+916300187268" className="hover:underline ml-2">
-                  +91 6300187268
+                <a href="tel:+918374719689" className="hover:underline ml-2">
+                  +91 8374719689
                 </a>
                 ,
                 <a href="tel:+917093135378" className="hover:underline ml-2">

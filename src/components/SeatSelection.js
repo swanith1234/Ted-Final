@@ -10,17 +10,27 @@ const SelectSeats = () => {
   const [attendees, setAttendees] = useState([{ name: "", email: "" }]);
   const [phone, setPhone] = useState("");
 
-  // Update the number of input fields dynamically when numSeats changes
+  // Update the number of input fields dynamically while retaining user input
   useEffect(() => {
-    setAttendees(
-      Array.from({ length: numSeats }, () => ({ name: "", email: "" }))
-    );
+    setAttendees((prevAttendees) => {
+      const updatedAttendees = [...prevAttendees];
+
+      // If increasing seats, add empty entries
+      while (updatedAttendees.length < numSeats) {
+        updatedAttendees.push({ name: "", email: "" });
+      }
+
+      // If decreasing seats, truncate the list
+      return updatedAttendees.slice(0, numSeats);
+    });
   }, [numSeats]);
 
   const handleChange = (index, field, value) => {
-    const updatedAttendees = [...attendees];
-    updatedAttendees[index][field] = value;
-    setAttendees(updatedAttendees);
+    setAttendees((prevAttendees) => {
+      const updatedAttendees = [...prevAttendees];
+      updatedAttendees[index][field] = value;
+      return updatedAttendees;
+    });
   };
 
   const totalPrice = numSeats * pricePerSeat;
@@ -31,13 +41,9 @@ const SelectSeats = () => {
       return;
     }
 
-    console.log("✅ Payment simulated successfully!");
-    console.log("Attendees:", attendees);
-    console.log("Phone:", phone);
-    console.log("Total Price:", totalPrice);
-
-    // Simulating successful payment & navigating to success page
-    navigate("/success", { state: { attendees, phone, totalPrice } });
+    navigate("/payment", {
+      state: { attendees, phone, totalPrice },
+    });
   };
 
   return (
@@ -57,24 +63,29 @@ const SelectSeats = () => {
         }
       />
 
-      {attendees.map((attendee, index) => (
-        <div key={index} className="mt-4">
-          <input
-            type="text"
-            placeholder={`Attendee ${index + 1} Name`}
-            className="p-2 border rounded w-64 text-black"
-            value={attendee.name}
-            onChange={(e) => handleChange(index, "name", e.target.value)}
-          />
-          <input
-            type="email"
-            placeholder={`Attendee ${index + 1} Email`}
-            className="p-2 border rounded w-64 text-black ml-2"
-            value={attendee.email}
-            onChange={(e) => handleChange(index, "email", e.target.value)}
-          />
-        </div>
-      ))}
+      <div className="mt-4 w-full flex flex-col items-center">
+        {attendees.map((attendee, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:flex-row items-center gap-2 mb-3"
+          >
+            <input
+              type="text"
+              placeholder={`Attendee ${index + 1} Name`}
+              className="p-2 border rounded text-black w-64"
+              value={attendee.name}
+              onChange={(e) => handleChange(index, "name", e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder={`Attendee ${index + 1} Email`}
+              className="p-2 border rounded text-black w-64"
+              value={attendee.email}
+              onChange={(e) => handleChange(index, "email", e.target.value)}
+            />
+          </div>
+        ))}
+      </div>
 
       <label className="mt-4">Phone Number:</label>
       <input
@@ -88,7 +99,7 @@ const SelectSeats = () => {
         className="mt-6 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-lg"
         onClick={handlePayment}
       >
-        Simulate Payment (₹{totalPrice})
+        Proceed to Payment (₹{totalPrice})
       </button>
     </div>
   );

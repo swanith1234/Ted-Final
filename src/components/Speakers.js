@@ -1,34 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
 import defaultImage from "../assets/images/random.jpg"; // Fallback image
-import priyanka  from "../assets/images/priyanka.jpeg";
-import vvlakshmi  from "../assets/images/vvlaksmi.jpg";
+import priyanka from "../assets/images/priyanka.jpeg";
+import vvlakshmi from "../assets/images/vvlaksmi.jpg";
 import jahnavi from "../assets/images/Jahnavi-Dangeti.jpg";
-import vidhya  from "../assets/images/vidya.jpeg";
+import vidhya from "../assets/images/vidya.jpeg";
 import abdus from "../assets/images/abdus.jpeg";
-import punit  from "../assets/images/punit.jpeg";
-
+import punit from "../assets/images/punit.jpeg";
+import koushik from "../assets/images/koushik.jpg";
 const speakers = [
   {
-    name: "V.V. Lakshmi Narayana",
-    bio: "Former IPS officer & social reformer.",
-    img: vvlakshmi,
+    name: "Abdus Samad",
+    bio: "Professor at IIT Madras, expert in marine energy.",
+    img: abdus,
   },
+
+  {
+    name: "Koushik Shankar",
+    bio: "The Art and Science of Culinary Innovation.",
+    img: koushik,
+  },
+
   {
     name: "Jahnavi Dangeti",
     bio: "Aspiring astronaut & aerospace engineer.",
     img: jahnavi,
   },
-  {
-    name: "Vidhya Sagar",
-    bio: "Product Manager & Innovation Leader.",
-    img: vidhya,
-  },
-  {
-    name: "Abdus Samad",
-    bio: "Professor at IIT Madras, expert in marine energy.",
-    img:  abdus,
-  },
+
   {
     name: "Punit Chawla",
     bio: "UX Designer & Digital Experience Innovator.",
@@ -38,6 +36,11 @@ const speakers = [
     name: "Priyanka Gandhavalla",
     bio: "Founder & CEO, AI Health-Tech Innovator.",
     img: priyanka,
+  },
+  {
+    name: "Vidhya Sagar",
+    bio: "Product Manager & Innovation Leader.",
+    img: vidhya,
   },
 ];
 
@@ -93,9 +96,7 @@ const Speakers = () => {
 
               {/* Speaker Info Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-                <motion.div
-                  className="p-4 w-full text-center bg-black/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                >
+                <motion.div className="p-4 w-full text-center bg-black/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <h3 className="text-lg font-bold">{speaker.name}</h3>
                   <p className="text-sm text-gray-300">{speaker.bio}</p>
                 </motion.div>
