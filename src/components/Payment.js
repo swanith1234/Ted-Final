@@ -1,18 +1,79 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-
 import QRCode from "../assets/images/Scanner.jpg";
 
-const GOOGLE_SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbzkQepSkyJDsLfZ1lBoJyr3rPS4_lEyC9UxbXoLkS0Ue3uFAr3PSN0pO1z0RHbffFtUKg/exec";
+// Replace with your deployed Apps Script URLs
+const FILE_UPLOAD_URL =
+  "https://script.google.com/macros/s/AKfycbzqkqguSk1uD5oWYBoplaTqwbFU1_osLjq5XDyFfzpIy3cKjqyDSct2tNzOCsWwtbNknA/exec";
+const SHEET_SUBMIT_URL =
+  "https://script.google.com/macros/s/AKfycbzadwyp7SxrF8j-9v33QXiLSMpL3HpHz3ReMPl5VwsaGCE2VESIV2_ukGE_iSZ1Nxgb/exec";
 
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { attendees, phone, totalPrice } = location.state || {};
   const [transactionId, setTransactionId] = useState("");
+  const [screenshot, setScreenshot] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleImageChange = (e) => {
+    setScreenshot(e.target.files[0]);
+    var file = e.target.files[0]; //the file
+    var reader = new FileReader(); //this for convert to Base64
+    reader.readAsDataURL(e.target.files[0]); //start conversion...
+    reader.onload = function (e) {
+      //.. once finished..
+      var rawLog = reader.result.split(",")[1]; //extract only thee file data part
+      var dataSend = {
+        dataReq: { data: rawLog, name: file.name, type: file.type },
+        fname: "uploadFilesToGoogleDrive",
+      }; //preapre info to send to API
+      fetch(
+        "https://script.google.com/macros/s/AKfycbw_uIDktFPEB_0hAo3iN98hT_ug81TSRJL7XIvm1863Lc9ZOGdfYeTdDuC7oP6qFLaN6w/exec", //your AppsScript URL
+        { method: "POST", body: JSON.stringify(dataSend) }
+      ) //send to Api
+        .then((res) => res.json())
+        .then((a) => {
+          console.log(a);
+          setScreenshot(a.url); //See response
+        })
+        .catch((e) => console.log(e)); // Or Error in console
+    };
+  };
+
+  // const uploadImage = async () => {
+  //   if (!screenshot) return null;
+
+  //   const reader = new FileReader();
+
+  //   return new Promise((resolve, reject) => {
+  //     reader.onloadend = async () => {
+  //       const base64 = reader.result.split(",")[1];
+  //       const formData = new FormData();
+  //       formData.append("filedata", base64);
+  //       formData.append("filename", screenshot.name);
+  //       formData.append("mimeType", screenshot.type);
+
+  //       try {
+  //         const response = await fetch(FILE_UPLOAD_URL, {
+  //           method: "POST",
+  //           mode: "no-cors",
+  //           body: JSON.stringify({
+  //             filedata: base64,
+  //             filename: screenshot.name,
+  //             mimeType: screenshot.type,
+  //           }),
+  //         });
+  //         const result = await response.json();
+  //         console.log(result);
+  //         resolve(result.imageUrl);
+  //       } catch (err) {
+  //         reject(err);
+  //       }
+  //     };
+  //     reader.readAsDataURL(screenshot);
+  //   });
+  // };
 
   const validateTransaction = async () => {
     const trimmedTransactionId = transactionId.trim();
@@ -22,69 +83,52 @@ const PaymentPage = () => {
       return;
     }
 
-    if (!/^PAY[A-Z0-9]+$/.test(trimmedTransactionId)) {
-      alert("❌ Invalid transaction ID. Please check again.");
+    if (!screenshot) {
+      alert("⚠️ Please upload the payment screenshot!");
       return;
     }
 
     setIsProcessing(true);
 
     try {
+      // const imageUrl = await uploadImage();
+
+      if (!screenshot) throw new Error("❌ Failed to upload image");
+
+      const uniqueId = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
       const attendeeData = attendees.map((attendee) => ({
-        transactionId: trimmedTransactionId,
-        phone,
-        totalPrice,
+        uniqueId,
         name: attendee.name,
         email: attendee.email,
-        seats: attendees.length,
+        phone,
+        seatsBooked: attendees.length,
+        amountPaid: totalPrice,
+        transactionId: trimmedTransactionId,
+        screenshotUrl: screenshot,
+        timestamp: new Date().toLocaleString(),
       }));
 
-      const response = await axios.post(GOOGLE_SHEET_URL, {
-        data: attendeeData,
-      });
-      // axios
-      //   .post(
-      //     "https://script.google.com/macros/s/AKfycby0.../exec",
-      //     {
-      //       data: [
-      //         {
-      //           transactionId: "PAY12",
-      //           phone: "sd",
-      //           totalPrice: 350,
-      //           name: "dc",
-      //           email: "ds",
-      //           seats: 1,
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     }
-      //   )
-      //   .then((res) => console.log(res.data))
-      //   .catch((err) => console.error("Axios Error:", err));
-
-      if (
-        typeof response.data === "string" &&
-        response.data.includes("Success")
-      ) {
-        alert("✅ Payment Successful! Details saved.");
-        navigate("/success", {
-          state: {
-            attendees,
-            phone,
-            totalPrice,
-            transactionId: trimmedTransactionId,
-          },
-        });
-      } else {
-        alert("⚠️ Error saving data. Please try again.");
+      for (const attendee of attendeeData) {
+        await fetch(
+          "https://script.google.com/macros/s/AKfycbwI90s532JBuJf1gqoEx8QEU8s7Uqbolb97ISC00-ero4SlzzPgAeu_j-l5lqj_r4pC/exec",
+          {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(attendee),
+          }
+        );
+        console.log("Data submitted:", attendee);
       }
-    } catch (error) {
-      console.error("Axios Error:", error);
-      alert("❌ Error saving data. Please try again.");
+
+      alert("✅ Submitted successfully!");
+      navigate("/success");
+    } catch (err) {
+      console.error("Error:", err);
+      alert("❌ Something went wrong! Try again.");
     } finally {
       setIsProcessing(false);
     }
@@ -108,23 +152,34 @@ const PaymentPage = () => {
           className="w-64 h-64 mb-4 mx-auto"
         />
         <p className="text-sm text-gray-300">
-          Please complete payment and enter the transaction ID below
+          Please complete payment and upload the screenshot along with the
+          transaction ID.
         </p>
       </div>
 
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md mb-4">
         <label className="block mb-2">Transaction ID:</label>
         <input
           type="text"
           placeholder="PAY... (from payment receipt)"
-          className="w-full p-3 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-red-400"
+          className="w-full p-3 rounded-lg border border-gray-300 text-black"
           value={transactionId}
           onChange={(e) => setTransactionId(e.target.value)}
         />
       </div>
 
+      <div className="w-full max-w-md mb-6">
+        <label className="block mb-2">Upload Screenshot:</label>
+        <input
+          type="file"
+          accept="image/*"
+          className="w-full text-white"
+          onChange={handleImageChange}
+        />
+      </div>
+
       <button
-        className={`mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 ${
+        className={`mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 ${
           isProcessing ? "opacity-50 cursor-not-allowed" : ""
         }`}
         onClick={validateTransaction}
