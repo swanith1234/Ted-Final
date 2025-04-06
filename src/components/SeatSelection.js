@@ -9,17 +9,31 @@ const SelectSeats = () => {
   const [numSeats, setNumSeats] = useState(1);
   const [attendees, setAttendees] = useState([{ name: "", email: "" }]);
   const [phone, setPhone] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
-  // Adjust attendee fields dynamically
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const nameRegex = /^[A-Za-z\s]{2,}$/;
+  const phoneRegex = /^[6-9]\d{9}$/;
+
   useEffect(() => {
-    setAttendees((prevAttendees) => {
-      const updated = [...prevAttendees];
+    setAttendees((prev) => {
+      const updated = [...prev];
       while (updated.length < numSeats) {
         updated.push({ name: "", email: "" });
       }
       return updated.slice(0, numSeats);
     });
   }, [numSeats]);
+
+  useEffect(() => {
+    const allValid =
+      phoneRegex.test(phone) &&
+      attendees.every(
+        (a) => nameRegex.test(a.name) && emailRegex.test(a.email)
+      );
+
+    setIsFormValid(allValid);
+  }, [phone, attendees]);
 
   const handleChange = (index, field, value) => {
     setAttendees((prev) => {
@@ -29,16 +43,16 @@ const SelectSeats = () => {
     });
   };
 
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+    if (value.length <= 10) setPhone(value);
+  };
+
   const totalPrice = numSeats * pricePerSeat;
 
   const handlePayment = () => {
-    if (numSeats < 1) {
-      alert("⚠️ Please select at least 1 seat.");
-      return;
-    }
-
-    if (!phone || attendees.some((a) => !a.name || !a.email)) {
-      alert("⚠️ Please fill in all details before proceeding!");
+    if (!isFormValid) {
+      alert("⚠️ Please fill in valid details before proceeding!");
       return;
     }
 
@@ -58,6 +72,7 @@ const SelectSeats = () => {
         type="number"
         className="p-3 mb-6 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-red-400 w-40 text-center"
         value={numSeats}
+        min={1}
         onChange={(e) => {
           const value = e.target.value;
           if (value === "") {
@@ -95,14 +110,22 @@ const SelectSeats = () => {
       <label className="mt-4 text-lg">Phone Number:</label>
       <input
         type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        maxLength="10"
         className="p-3 mt-2 mb-6 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-red-400 w-full max-w-md"
         value={phone}
-        onChange={(e) => setPhone(e.target.value)}
+        onChange={handlePhoneChange}
       />
 
       <button
-        className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300"
+        className={`mt-4 font-semibold py-3 px-8 rounded-lg transition-all duration-300 ${
+          isFormValid
+            ? "bg-red-500 hover:bg-red-600 text-white"
+            : "bg-gray-500 text-white cursor-not-allowed"
+        }`}
         onClick={handlePayment}
+        disabled={!isFormValid}
       >
         Proceed to Payment (₹{totalPrice})
       </button>

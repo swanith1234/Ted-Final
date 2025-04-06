@@ -12,13 +12,13 @@ import Contact from "./components/contact";
 import Passes from "./components/Passes";
 import Sponsors from "./components/Sponsors";
 import PaymentPage from "./components/Payment";
+import VantaBackground from "./components/VantaBackground";
 const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="pt-14 flex-grow ">
-          {" "}
           {/* Add padding to avoid overlap with fixed header */}
           <Routes>
             <Route

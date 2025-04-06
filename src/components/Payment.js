@@ -74,31 +74,49 @@ const PaymentPage = () => {
   //     reader.readAsDataURL(screenshot);
   //   });
   // };
+  const generateUniqueIds = (attendees, totalPrice) => {
+    let prefix = "U"; // Default Unknown
+
+    if (totalPrice % 400 === 0) {
+      prefix = "V"; // VIP
+    } else if (totalPrice % 350 === 0) {
+      prefix = "G"; // General
+    }
+
+    const timestamp = Date.now();
+    const totalSeats = attendees.length;
+
+    return attendees.map((_, index) => {
+      const seatNumber = index + 1;
+      return `${prefix}${seatNumber}-${totalSeats}-${timestamp}`;
+    });
+  };
 
   const validateTransaction = async () => {
     const trimmedTransactionId = transactionId.trim();
+    const utrPattern = /^[A-Za-z0-9]{12,22}$/;
 
-    if (!trimmedTransactionId) {
-      alert("⚠️ Please enter the transaction ID!");
+    if (!utrPattern.test(trimmedTransactionId)) {
+      alert(
+        "⚠️ Please enter a valid UTR number (12–22 alphanumeric characters)!"
+      );
       return;
     }
 
     if (!screenshot) {
-      alert("⚠️ Please upload the payment screenshot!");
+      alert(
+        "⚠️ Please upload the payment screenshot and wait for it to finish uploading."
+      );
       return;
     }
 
     setIsProcessing(true);
 
     try {
-      // const imageUrl = await uploadImage();
+      const uniqueIds = generateUniqueIds(attendees, totalPrice);
 
-      if (!screenshot) throw new Error("❌ Failed to upload image");
-
-      const uniqueId = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-
-      const attendeeData = attendees.map((attendee) => ({
-        uniqueId,
+      const attendeeData = attendees.map((attendee, index) => ({
+        uniqueId: uniqueIds[index],
         name: attendee.name,
         email: attendee.email,
         phone,
@@ -121,7 +139,6 @@ const PaymentPage = () => {
             body: JSON.stringify(attendee),
           }
         );
-        console.log("Data submitted:", attendee);
       }
 
       alert("✅ Submitted successfully!");
@@ -158,10 +175,10 @@ const PaymentPage = () => {
       </div>
 
       <div className="w-full max-w-md mb-4">
-        <label className="block mb-2">Transaction ID:</label>
+        <label className="block mb-2">UTR Number:</label>
         <input
           type="text"
-          placeholder="PAY... (from payment receipt)"
+          placeholder="Enter the UTR"
           className="w-full p-3 rounded-lg border border-gray-300 text-black"
           value={transactionId}
           onChange={(e) => setTransactionId(e.target.value)}
@@ -170,20 +187,43 @@ const PaymentPage = () => {
 
       <div className="w-full max-w-md mb-6">
         <label className="block mb-2">Upload Screenshot:</label>
+        <label htmlFor="file-upload" className="custom-file-upload">
+          <div className="icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M10 1C9.73 1 9.48 1.11 9.29 1.29L3.29 7.29C3.11 7.48 3 7.73 3 8V20C3 21.66 4.34 23 6 23H7C7.55 23 8 22.55 8 22C8 21.45 7.55 21 7 21H6C5.45 21 5 20.55 5 20V9H10C10.55 9 11 8.55 11 8V3H18C18.55 3 19 3.45 19 4V9C19 9.55 19.45 10 20 10C20.55 10 21 9.55 21 9V4C21 2.34 19.66 1 18 1H10Z" />
+            </svg>
+          </div>
+          <div className="text">Choose a screenshot</div>
+        </label>
         <input
+          id="file-upload"
           type="file"
           accept="image/*"
-          className="w-full text-white"
           onChange={handleImageChange}
+          className="hidden"
         />
       </div>
 
       <button
-        className={`mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 ${
-          isProcessing ? "opacity-50 cursor-not-allowed" : ""
+        className={`mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 ${
+          isProcessing ||
+          !transactionId.trim().match(/^[A-Za-z0-9]{12,22}$/) ||
+          !screenshot
+            ? "opacity-50 cursor-not-allowed"
+            : ""
         }`}
         onClick={validateTransaction}
-        disabled={isProcessing}
+        disabled={
+          isProcessing ||
+          !transactionId.trim().match(/^[A-Za-z0-9]{12,22}$/) ||
+          !screenshot
+        }
       >
         {isProcessing ? "Processing..." : "Verify Payment"}
       </button>
