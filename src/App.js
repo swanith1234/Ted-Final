@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 import SeatSelection from "./components/SeatSelection";
 import Contact from "./components/contact";
 import Passes from "./components/Passes";
-
+import Sponsors from "./components/Sponsors";
+import PaymentPage from "./components/Payment";
 const App = () => {
   return (
     <Router>
@@ -27,7 +28,8 @@ const App = () => {
                   <Hero />
                   <Speakers />
                   <Schedule />
-                  <Partners />
+                  {/* <Partners /> */}
+                  <Sponsors></Sponsors>
                   <About />
                 </>
               }
@@ -41,6 +43,7 @@ const App = () => {
             <Route path="/select-seats" element={<SeatSelection />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/passes" element={<Passes />} />{" "}
+            <Route path="/payment" element={<PaymentPage />} />{" "}
             {/* Add this line for Passes */}
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
