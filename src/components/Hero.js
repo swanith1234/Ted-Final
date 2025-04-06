@@ -1,13 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import BIRDS from "vanta/dist/vanta.birds.min";
 const Hero = () => {
+  const [vantaEffect, setVantaEffect] = useState(null);
+  const myRef = useRef(null);
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+        BIRDS({
+          el: myRef.current,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          backgroundColor: 0x0,
+          color2: 0xff000e,
+          birdSize: 0.5,
+          wingSpan: 40.0,
+          speedLimit: 10.0,
+          separation: 100.0,
+          alignment: 100.0,
+          cohesion: 100.0,
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
   const calculateTimeLeft = () => {
     const eventDate = new Date("April 13, 2025 00:00:00").getTime();
     const now = new Date().getTime();
     const timeLeft = eventDate - now;
-
     return {
       days: Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
       hours: Math.floor((timeLeft / (1000 * 60 * 60)) % 24),
@@ -26,7 +54,11 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero bg-black text-white h-screen flex flex-col items-center justify-center px-4 sm:px-8">
+    <section
+      className="hero bg-black text-white h-screen flex flex-col items-center justify-center px-4 sm:px-8"
+      id="vanta"
+      ref={myRef}
+    >
       <motion.div
         className="hero-content text-center w-full max-w-4xl"
         initial={{ opacity: 0, translateY: 20 }}
