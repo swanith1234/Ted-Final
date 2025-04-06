@@ -4,36 +4,42 @@ import { FaMusic, FaUserAlt, FaCoffee } from "react-icons/fa";
 const Schedule = () => {
   const scheduleItems = [
     {
-      title: "Welcome & Opening Remarks",
-      time: "9:00 AM - 9:15 AM",
+      title: "Opening Ceremony",
+      time: "9:30 AM - 10:15 AM",
       icon: <FaUserAlt />,
     },
-    { title: "Abdus Samad", time: "9:15 AM - 9:45 AM", icon: <FaUserAlt /> },
+    { title: "Abdus Samad", time: "10:15 AM - 10:45 AM", icon: <FaUserAlt /> },
     {
       title: "Koushik Shankar",
-      time: "9:45 AM - 10:15 AM",
+      time: "10:45 AM - 11:15 AM",
       icon: <FaUserAlt />,
     },
+    { title: "Break", time: "11:15 AM - 11:30 AM", icon: <FaCoffee /> },
+    {
+      title: "Networking Session",
+      time: "11:30 AM - 12:00 AM",
+      icon: <FaUserAlt />,
+    },
+    { title: "Lunch Break", time: "12:00 PM - 1:30 PM", icon: <FaCoffee /> },
     {
       title: "Jahnavi Dangeti",
-      time: "10:15 AM - 10:45 AM",
+      time: "1:30 AM - 2:00 AM",
       icon: <FaUserAlt />,
     },
-    { title: "Break", time: "10:45 AM - 11:00 AM", icon: <FaCoffee /> },
-    { title: "Punit Chawla", time: "11:00 AM - 11:30 AM", icon: <FaUserAlt /> },
+    { title: "Punit Chawla", time: "2:00 PM - 2:30 PM", icon: <FaUserAlt /> },
     {
       title: "Priyanka Gandhavalla",
       time: "11:30 AM - 12:00 PM",
       icon: <FaUserAlt />,
     },
-    { title: "Lunch Break", time: "12:00 PM - 1:00 PM", icon: <FaCoffee /> },
-    { title: "Vidhya Sagar", time: "1:00 PM - 1:30 PM", icon: <FaUserAlt /> },
+    { title: "Vidhya Sagar", time: "2:30 PM - 3:00 PM", icon: <FaUserAlt /> },
     {
       title: "Closing Remarks",
-      time: "1:30 PM - 2:00 PM",
+      time: "3:00 PM - 3:30 PM",
       icon: <FaUserAlt />,
     },
-    { title: "Music Concert", time: "2:00 PM - 3:00 PM", icon: <FaMusic /> },
+    { title: "Break", time: "3:30 PM - 4:00 PM", icon: <FaUserAlt /> },
+    { title: "Music Concert", time: "4:00 PM - 5:00 PM", icon: <FaMusic /> },
   ];
 
   return (
@@ -52,7 +58,7 @@ const Schedule = () => {
             {scheduleItems.map((item, index) => (
               <li
                 key={index}
-                className={`timeline-item mb-8 flex justify-between items-center w-full`}
+                className="timeline-item mb-8 flex justify-between items-center w-full"
               >
                 {index % 2 === 0 ? (
                   <>
@@ -77,6 +83,11 @@ const Schedule = () => {
             ))}
           </ul>
         </div>
+
+        {/* Disclaimer */}
+        <p className="mt-10 text-center text-red-400 font-semibold animate-pulse">
+          ⚠️ Note: The schedule is tentative and subject to change.
+        </p>
       </div>
     </section>
   );

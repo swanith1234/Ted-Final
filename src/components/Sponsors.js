@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 import mcdonald from "../assets/images/mcDonald.png";
 // import dopamineStore from "../assets/images/dopamine_store.png";
 // import defaultImage from "../assets/images/random.jpg"; // Fallback image
-
+import CPR from "../assets/images/CPR.png";
+import Teddie from "../assets/images/Teddie.PNG";
+import United from "../assets/images/UnitedTirupati.jpg";
 const sponsors = {
-  titlePartner: { name: "Aarvi Digitals", img: mcdonald },
+  titlePartner: { name: "Aarvi Digitals", img: CPR },
   otherPartners: [
-    { name: "McDonald's", img: mcdonald },
-    { name: "The Dopamine Store", img: mcdonald },
-    { name: "Partner 3", img: mcdonald },
-    { name: "Partner 4", img: mcdonald },
+    { name: "Teddie Foodie", img: Teddie },
+    { name: "United Tirupati", img: United },
+    // { name: "Partner 3", img: mcdonald },
+    // { name: "Partner 4", img: mcdonald },
   ],
 };
 
@@ -47,7 +49,7 @@ const Sponsors = () => {
         </motion.h2>
         <div className="flex justify-center mb-12">
           <motion.div
-            className="w-40 h-40 flex items-center justify-center rounded-full border-4 border-red-600 p-2"
+            className="w-[200px] h-[200px] flex items-center justify-center rounded-full border-4 border-red-600 p-2"
             variants={cardVariants}
           >
             <img
@@ -62,13 +64,13 @@ const Sponsors = () => {
           className="text-3xl sm:text-4xl text-red-600 font-bold mb-6"
           variants={cardVariants}
         >
-          Other Partners
+          Media Partners
         </motion.h2>
         <div className="flex flex-wrap justify-center gap-8">
           {sponsors.otherPartners.map((partner, index) => (
             <motion.div
               key={index}
-              className="w-32 h-32 flex items-center justify-center rounded-full border-2 border-red-600 p-2"
+              className="w-[200px] h-[200px] flex items-center justify-center rounded-full border-2 border-red-600 p-2"
               variants={cardVariants}
             >
               <img
