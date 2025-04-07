@@ -24,6 +24,9 @@ const Passes = () => {
             <br />
             🎁 Grab your exclusive Swag Bag, Pen, Notes, Badge & Food Pass.
             <br />
+            🏅 A professionally recognized Participation Certificate will also
+            be provided.
+            <br />
             🎤 Full access to mind-blowing talks & electrifying energy.
           </p>
           <p className="mt-4 text-sm text-gray-400 italic">
@@ -51,6 +54,9 @@ const Passes = () => {
             🌟 Want the VIP experience? This is it.
             <br />
             🎁 Premium Swag Bag, Pen, Notes, Badge & Food Pass included.
+            <br />
+            🏅 A professionally recognized Participation Certificate will also
+            be provided.
             <br />
             🔊 Feel the power from the front row — TEDx like you've never seen
             before!

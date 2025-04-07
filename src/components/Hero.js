@@ -82,7 +82,15 @@ const Hero = () => {
 
         {/* Event Date & Venue */}
         <p className="text-md sm:text-lg md:text-xl text-white font-medium mb-6">
-          📅 April 13, 2025 | 📍 Srinivasa Auditorium
+          📅 April 13, 2025 | 📍{" "}
+          <a
+            href="https://www.google.com/maps?q=Srinivasa+Auditorium+Tirupati"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-red-400 hover:underline"
+          >
+            Srinivasa Auditorium
+          </a>
         </p>
 
         {/* Countdown Timer */}
