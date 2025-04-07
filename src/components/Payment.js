@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import QRCode from "../assets/images/Scanner.jpg";
-
+import QRCode from "../assets/images/PaymentQR.png";
+import { motion } from "framer-motion";
+// just to recommit
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -49,8 +50,8 @@ const PaymentPage = () => {
 
   const generateUniqueIds = (attendees, totalPrice) => {
     let prefix = "U";
-    if (totalPrice % 400 === 0) prefix = "V";
-    else if (totalPrice % 350 === 0) prefix = "G";
+    if (totalPrice % 900 === 0) prefix = "V";
+    else if (totalPrice % 600 === 0) prefix = "G";
 
     const timestamp = Date.now();
     return attendees.map(
@@ -193,6 +194,27 @@ const PaymentPage = () => {
           </div>
         )} */}
       </div>
+      {/* Disclaimer */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="bg-black border-l-8 border-red-600 text-white p-5 rounded-lg shadow-lg max-w-md w-full text-sm"
+      >
+        <h4 className="text-xl font-bold mb-2 text-red-500 uppercase">
+          Important
+        </h4>
+        <p className="mb-2">
+          Please make the{" "}
+          <span className="font-semibold text-red-400">full payment</span> for
+          the tickets as shown above. Only after full payment will your seat be
+          blocked and a confirmation mail sent.
+        </p>
+        <p className="font-semibold text-yellow-400">
+          Partial payments will not be accepted and the amount will not be
+          refunded.
+        </p>
+      </motion.div>
 
       <button
         className={`mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 ${
