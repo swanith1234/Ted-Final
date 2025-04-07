@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QRCode from "../assets/images/PaymentQR.png";
 import { motion } from "framer-motion";
+// just to recommit
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
