@@ -10,14 +10,16 @@ import Footer from "./components/Footer";
 import SeatSelection from "./components/SeatSelection";
 import Contact from "./components/contact";
 import Passes from "./components/Passes";
-
+import Sponsors from "./components/Sponsors";
+import PaymentPage from "./components/Payment";
+import Success from "./components/Success";
+import VantaBackground from "./components/VantaBackground";
 const App = () => {
   return (
     <Router>
-            <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen">
         <Header />
         <main className="pt-14 flex-grow ">
-          {" "}
           {/* Add padding to avoid overlap with fixed header */}
           <Routes>
             <Route
@@ -27,7 +29,8 @@ const App = () => {
                   <Hero />
                   <Speakers />
                   <Schedule />
-                  <Partners />
+                  {/* <Partners /> */}
+                  <Sponsors></Sponsors>
                   <About />
                 </>
               }
@@ -36,11 +39,13 @@ const App = () => {
             <Route path="/speakers" element={<Speakers />} />
             <Route path="/schedule" element={<Schedule />} />{" "}
             {/* Add this line for Schedule */}
-            <Route path="/partners" element={<Partners />} />{" "}
+            <Route path="/partners" element={<Sponsors />} />{" "}
             {/* Add this line for Partners */}
             <Route path="/select-seats" element={<SeatSelection />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/passes" element={<Passes />} />{" "}
+            <Route path="/payment" element={<PaymentPage />} />{" "}
+            <Route path="/success" element={<Success />} />{" "}
             {/* Add this line for Passes */}
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
