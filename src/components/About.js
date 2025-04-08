@@ -50,7 +50,7 @@ const About = () => {
           transition={{ duration: 1.2, delay: 0.4 }}
         >
           <p className="mb-6">
-            At <span className="font-semibold">TEDx SV University</span>, we
+            At <span className="font-semibold">TEDx SriVenkateswaraU</span>, we
             believe in the power of ideas to transform our world. Our platform
             is a hub for thought leaders, innovators, and changemakers to come
             together and challenge the status quo.
