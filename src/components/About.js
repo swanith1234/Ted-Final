@@ -128,18 +128,7 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Call to Action (Optional) */}
-        <motion.div
-          className="mt-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1 }}
-        >
-          <p className="text-lg font-light italic mb-6">
-            Ready to explore the future with us?
-          </p>
-   
-        </motion.div>
+    
       </div>
     </section>
   );
