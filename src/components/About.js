@@ -138,12 +138,12 @@ const About = () => {
           <p className="text-lg font-light italic mb-6">
             Ready to explore the future with us?
           </p>
-          <a
-            href="/join-us"
-            className="bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg transform hover:scale-105"
-          >
-            Join Our Movement
-          </a>
+          // <a
+          //   href="/join-us"
+          //   className="bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg transform hover:scale-105"
+          // >
+          //   Join Our Movement
+          // </a>
         </motion.div>
       </div>
     </section>
