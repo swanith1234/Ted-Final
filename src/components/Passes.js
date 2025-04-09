@@ -29,9 +29,9 @@ const Passes = () => {
             <br />
             🎤 Full access to mind-blowing talks & electrifying energy.
           </p>
-          <p className="mt-4 text-sm text-gray-400 italic">
+          {/* <p className="mt-4 text-sm text-gray-400 italic">
             🎫 General seating – Be part of the movement!
-          </p>
+          </p> */}
         </div>
         <button
           onClick={() => handleRegister(600)}
@@ -50,13 +50,13 @@ const Passes = () => {
           <p className="text-xl font-semibold mt-3 text-yellow-400">
             <span className="line-through text-gray-500">₹1000</span> ₹900
           </p>
-  <p className="text-sm text-yellow-400 font-medium mt-1">
-  🎓 Exclusively for Working Professionals across any domain
-</p>
+          <p className="text-sm text-yellow-400 font-medium mt-1">
+            🎓 Exclusively for Working Professionals across any domain
+          </p>
           <p className="mt-6 text-base text-gray-300 leading-relaxed">
-            🌟 Want the VIP experience? This is it.
+            🌟 Are you a Working Professional.
             <br />
-            🎁  Swag Bag, Pen, Notes, Badge & Food Pass included.
+            🎁 Swag Bag, Pen, Notes, Badge & Food Pass included.
             <br />
             🏅 A professionally recognized Participation Certificate will also
             be provided.
@@ -64,9 +64,9 @@ const Passes = () => {
             🔊 Feel the power from the front row — TEDx like you've never seen
             before!
           </p>
-          <p className="mt-4 text-sm text-yellow-400 font-medium">
+          {/* <p className="mt-4 text-sm text-yellow-400 font-medium">
             💺 Priority Front-Row Seating – Own the spotlight.
-          </p>
+          </p> */}
         </div>
         <button
           onClick={() => handleRegister(900)}

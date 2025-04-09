@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { attendees, phone, totalPrice } = location.state || {};
+  const { attendees, phone, totalPrice, institute } = location.state || {};
   const [transactionId, setTransactionId] = useState("");
   const [screenshot, setScreenshot] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -87,12 +87,13 @@ const PaymentPage = () => {
         amountPaid: totalPrice,
         transactionId: trimmedTransactionId,
         screenshotUrl: screenshot,
+        institute,
         timestamp: new Date().toLocaleString(),
       }));
 
       for (const attendee of attendeeData) {
         await fetch(
-          "https://script.google.com/macros/s/AKfycbwI90s532JBuJf1gqoEx8QEU8s7Uqbolb97ISC00-ero4SlzzPgAeu_j-l5lqj_r4pC/exec",
+          "https://script.google.com/macros/s/AKfycbzw20cXeA7vIfL3uQjofoEnoGCpKKalVvMiQQz_cQpM8h3Mm4_Khh_ojqc1tNEV8TJ-/exec",
           {
             method: "POST",
             mode: "no-cors",
@@ -100,6 +101,7 @@ const PaymentPage = () => {
             body: JSON.stringify(attendee),
           }
         );
+        console.log("Data submitted successfully:", attendee);
       }
 
       alert("✅ Submitted successfully!");
