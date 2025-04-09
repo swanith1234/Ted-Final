@@ -111,7 +111,7 @@ const About = () => {
           transition={{ duration: 1.5, delay: 0.8 }}
         >
             <h2 className="text-4xl font-bold text-red-600 text-center mb-12">
-        Meet Our Team
+        Meet Our Organizers
       </h2>
 
           {/* Scrollable Image Section */}
