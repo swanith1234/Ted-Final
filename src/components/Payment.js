@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QRCode from "../assets/images/PaymentQR.png";
 import { motion } from "framer-motion";
+<<<<<<< HEAD
+=======
+// just to recommit
+>>>>>>> 3bab2da1f100be400df58dc43ee296c38af5cf48
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -228,4 +232,8 @@ const PaymentPage = () => {
   );
 };
 
+<<<<<<< HEAD
 export default PaymentPage;
+=======
+export default PaymentPage;
+>>>>>>> 3bab2da1f100be400df58dc43ee296c38af5cf48

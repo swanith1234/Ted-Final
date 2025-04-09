@@ -36,7 +36,7 @@ const Header = () => {
         {/* Logo and Tagline */}
         <Link to="/" className="flex flex-col">
           <div className="flex items-center space-x-2">
-            <span className="text-red-600 font-bold text-xl">TED-X</span>
+            <span className="text-red-600 font-bold text-xl">TEDx</span>
             <span className="text-white font-bold text-xl">SriVenkateswaraU</span>
           </div>
           <span className="text-sm text-gray-400">Ideas Worth Spreading</span>

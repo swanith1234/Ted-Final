@@ -82,7 +82,7 @@ const Footer = () => {
           className="mt-10 text-center text-sm text-gray-500"
           variants={fadeIn}
         >
-          <p>&copy; 2024 TEDxSriVenkateswaraUniversity. All Rights Reserved.</p>
+          <p>&copy; 2025 TEDxSriVenkateswaraU. All Rights Reserved.</p>
         </motion.div>
       </div>
     </motion.footer>

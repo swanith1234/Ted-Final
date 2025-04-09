@@ -50,7 +50,7 @@ const About = () => {
           transition={{ duration: 1.2, delay: 0.4 }}
         >
           <p className="mb-6">
-            At <span className="font-semibold">TEDx SV University</span>, we
+            At <span className="font-semibold">TEDx SriVenkateswaraU</span>, we
             believe in the power of ideas to transform our world. Our platform
             is a hub for thought leaders, innovators, and changemakers to come
             together and challenge the status quo.
@@ -126,24 +126,6 @@ const About = () => {
               ))}
             </div>
           </div>
-        </motion.div>
-
-        {/* Call to Action (Optional) */}
-        <motion.div
-          className="mt-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1 }}
-        >
-          <p className="text-lg font-light italic mb-6">
-            Ready to explore the future with us?
-          </p>
-          <a
-            href="/join-us"
-            className="bg-red-500 text-white py-3 px-6 rounded-lg hover:bg-red-600 transition-colors duration-300 shadow-lg transform hover:scale-105"
-          >
-            Join Our Movement
-          </a>
         </motion.div>
       </div>
     </section>
