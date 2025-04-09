@@ -9,6 +9,7 @@ const SelectSeats = () => {
   const [numSeats, setNumSeats] = useState(1);
   const [attendees, setAttendees] = useState([{ name: "", email: "" }]);
   const [phone, setPhone] = useState("");
+  const [institute, setInstitute] = useState(""); // 🆕 New state for institute
   const [isFormValid, setIsFormValid] = useState(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,10 +31,16 @@ const SelectSeats = () => {
       phoneRegex.test(phone) &&
       attendees.every(
         (a) => nameRegex.test(a.name) && emailRegex.test(a.email)
-      );
+      ) &&
+      (pricePerSeat !== 600 || institute.trim().length >= 2);
+
+    // 🧹 Clear institute if price is 900
+    if (pricePerSeat === 900 && institute !== "") {
+      setInstitute("");
+    }
 
     setIsFormValid(allValid);
-  }, [phone, attendees]);
+  }, [phone, attendees, institute, pricePerSeat]);
 
   const handleChange = (index, field, value) => {
     setAttendees((prev) => {
@@ -44,7 +51,7 @@ const SelectSeats = () => {
   };
 
   const handlePhoneChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+    const value = e.target.value.replace(/\D/g, "");
     if (value.length <= 10) setPhone(value);
   };
 
@@ -57,7 +64,7 @@ const SelectSeats = () => {
     }
 
     navigate("/payment", {
-      state: { attendees, phone, totalPrice },
+      state: { attendees, phone, totalPrice, institute }, // 🆕 include institute in state
     });
   };
 
@@ -106,6 +113,19 @@ const SelectSeats = () => {
           </div>
         ))}
       </div>
+
+      {pricePerSeat === 600 && (
+        <>
+          <label className="mt-4 text-lg">Institute Name:</label>
+          <input
+            type="text"
+            placeholder="Enter your Institute name"
+            className="p-3 mt-2 mb-6 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-red-400 w-full max-w-md"
+            value={institute}
+            onChange={(e) => setInstitute(e.target.value)}
+          />
+        </>
+      )}
 
       <label className="mt-4 text-lg">Phone Number:</label>
       <input

@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QRCode from "../assets/images/PaymentQR.png";
 import { motion } from "framer-motion";
-<<<<<<< HEAD
-=======
 // just to recommit
->>>>>>> 3bab2da1f100be400df58dc43ee296c38af5cf48
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { attendees, phone, totalPrice } = location.state || {};
+  const { attendees, phone, totalPrice, institute } = location.state || {};
   const [transactionId, setTransactionId] = useState("");
   const [screenshot, setScreenshot] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -90,12 +87,13 @@ const PaymentPage = () => {
         amountPaid: totalPrice,
         transactionId: trimmedTransactionId,
         screenshotUrl: screenshot,
+        institute,
         timestamp: new Date().toLocaleString(),
       }));
 
       for (const attendee of attendeeData) {
         await fetch(
-          "https://script.google.com/macros/s/AKfycbwI90s532JBuJf1gqoEx8QEU8s7Uqbolb97ISC00-ero4SlzzPgAeu_j-l5lqj_r4pC/exec",
+          "https://script.google.com/macros/s/AKfycbzw20cXeA7vIfL3uQjofoEnoGCpKKalVvMiQQz_cQpM8h3Mm4_Khh_ojqc1tNEV8TJ-/exec",
           {
             method: "POST",
             mode: "no-cors",
@@ -103,6 +101,7 @@ const PaymentPage = () => {
             body: JSON.stringify(attendee),
           }
         );
+        console.log("Data submitted successfully:", attendee);
       }
 
       alert("✅ Submitted successfully!");
@@ -232,8 +231,4 @@ const PaymentPage = () => {
   );
 };
 
-<<<<<<< HEAD
 export default PaymentPage;
-=======
-export default PaymentPage;
->>>>>>> 3bab2da1f100be400df58dc43ee296c38af5cf48

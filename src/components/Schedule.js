@@ -5,41 +5,48 @@ const Schedule = () => {
   const scheduleItems = [
     {
       title: "Opening Ceremony",
-      time: "9:30 AM - 10:15 AM",
+      time: "9:30 AM - 10:00 AM",
       icon: <FaUserAlt />,
     },
-    { title: "Abdus Samad", time: "10:15 AM - 10:45 AM", icon: <FaUserAlt /> },
+    { title: "Speaker-1", time: "10:00 AM - 10:30 AM", icon: <FaUserAlt /> },
     {
-      title: "Koushik Shankar",
-      time: "10:45 AM - 11:15 AM",
+      title: "Speaker-2",
+      time: "10:30 AM - 11:00 AM",
       icon: <FaUserAlt />,
     },
-    { title: "Break", time: "11:15 AM - 11:30 AM", icon: <FaCoffee /> },
+    { title: "Break", time: "11:00 AM - 11:15 AM", icon: <FaCoffee /> },
     {
-      title: "Networking Session",
-      time: "11:30 AM - 12:00 AM",
+      title: "Speaker-3",
+      time: "11:15 AM - 11:45 AM",
       icon: <FaUserAlt />,
     },
-    { title: "Lunch Break", time: "12:00 PM - 1:30 PM", icon: <FaCoffee /> },
+    { title: "Speaker-4", time: "11:45 AM - 12:15 PM", icon: <FaUserAlt /> },
+    { title: "Lunch Break", time: "12:15 PM - 2:00 PM", icon: <FaCoffee /> },
     {
-      title: "Jahnavi Dangeti",
-      time: "1:30 AM - 2:00 AM",
+      title: "Speaker-5",
+      time: "2:00 PM - 2:30 PM",
       icon: <FaUserAlt />,
     },
-    { title: "Punit Chawla", time: "2:00 PM - 2:30 PM", icon: <FaUserAlt /> },
+    { title: "Speaker-6", time: "2:30 PM - 3:00 PM", icon: <FaUserAlt /> },
     {
-      title: "Priyanka Gandhavalla",
-      time: "11:30 AM - 12:00 PM",
-      icon: <FaUserAlt />,
-    },
-    { title: "Vidhya Sagar", time: "2:30 PM - 3:00 PM", icon: <FaUserAlt /> },
-    {
-      title: "Closing Remarks",
+      title: "Speaker-7",
       time: "3:00 PM - 3:30 PM",
       icon: <FaUserAlt />,
     },
-    { title: "Break", time: "3:30 PM - 4:00 PM", icon: <FaUserAlt /> },
-    { title: "Music Concert", time: "4:00 PM - 5:00 PM", icon: <FaMusic /> },
+    { title: "Break", time: "3:30 PM - 3:45 PM", icon: <FaCoffee /> },
+    {
+      title: "Networking session",
+      time: "3:45 PM - 4:15 PM",
+      icon: <FaUserAlt />,
+    },
+    { title: "Speaker-8", time: "4:15 PM - 4:45 PM", icon: <FaUserAlt /> },
+    {
+      title: "Closing Remarks",
+      time: "4:45 PM - 5:15 PM",
+      icon: <FaUserAlt />,
+    },
+    { title: "Break", time: "5:15 PM - 6:00 PM", icon: <FaUserAlt /> },
+    { title: "Music Concert", time: "6:00 PM - 7:30 PM", icon: <FaMusic /> },
   ];
 
   return (
