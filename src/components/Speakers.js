@@ -8,6 +8,7 @@ import vidhya from "../assets/images/vidya.jpeg";
 import abdus from "../assets/images/abdus.jpeg";
 import punit from "../assets/images/punit.jpeg";
 import koushik from "../assets/images/koushik.jpg";
+import siddarth from "../assets/images/Siddarth.jpg";
 const speakers = [
   {
     name: "Abdus Samad",
@@ -16,7 +17,7 @@ const speakers = [
   },
 
   {
-    name: "Koushik Shankar",
+    name: "Koushik",
     bio: "The Art and Science of Culinary Innovation.",
     img: koushik,
   },
@@ -33,9 +34,9 @@ const speakers = [
     img: punit,
   },
   {
-    name: "Priyanka Gandhavalla",
-    bio: "Founder & CEO, AI Health-Tech Innovator.",
-    img: priyanka,
+    name: "Siddhartha Vadlamudi",
+    bio: "Co-founder, Trajecto & GT Consulting",
+    img: siddarth,
   },
   {
     name: "Vidhya Sagar",

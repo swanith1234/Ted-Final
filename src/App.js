@@ -14,6 +14,7 @@ import Sponsors from "./components/Sponsors";
 import PaymentPage from "./components/Payment";
 import Success from "./components/Success";
 import VantaBackground from "./components/VantaBackground";
+import TeamSection from "./components/Team";
 const App = () => {
   return (
     <Router>
@@ -32,6 +33,7 @@ const App = () => {
                   {/* <Partners /> */}
                   <Sponsors></Sponsors>
                   <About />
+                  <TeamSection></TeamSection>
                 </>
               }
             />

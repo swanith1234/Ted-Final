@@ -110,7 +110,7 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.8 }}
         >
-          <h3 className="text-2xl font-semibold mb-8">Meet Our Team</h3>
+          <h3 className="text-2xl font-semibold mb-8">Meet Our Organizers</h3>
 
           {/* Scrollable Image Section */}
           <div className="overflow-hidden relative w-full">
@@ -127,8 +127,6 @@ const About = () => {
             </div>
           </div>
         </motion.div>
-
-    
       </div>
     </section>
   );
