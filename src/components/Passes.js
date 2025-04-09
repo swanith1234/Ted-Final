@@ -61,7 +61,7 @@ const Passes = () => {
             🏅 A professionally recognized Participation Certificate will also
             be provided.
             <br />
-            🔊 Feel the power from the front row — TEDx like you've never seen
+            🔊 Feel the power of TEDx like you've never seen
             before!
           </p>
           {/* <p className="mt-4 text-sm text-yellow-400 font-medium">
