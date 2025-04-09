@@ -33,7 +33,7 @@ const Hero = () => {
     };
   }, [vantaEffect]);
   const calculateTimeLeft = () => {
-    const eventDate = new Date("April 13, 2025 00:00:00").getTime();
+    const eventDate = new Date("April 13, 2025 09:00:00").getTime();
     const now = new Date().getTime();
     const timeLeft = eventDate - now;
     return {
