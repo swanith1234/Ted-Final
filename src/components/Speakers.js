@@ -9,25 +9,23 @@ import abdus from "../assets/images/abdus.jpeg";
 import punit from "../assets/images/punit.jpeg";
 import koushik from "../assets/images/koushik.jpg";
 import siddarth from "../assets/images/Siddarth.jpg";
+
 const speakers = [
   {
     name: "Abdus Samad",
     bio: "Professor at IIT Madras, expert in marine energy.",
     img: abdus,
   },
-
   {
     name: "Koushik",
     bio: "The Art and Science of Culinary Innovation.",
     img: koushik,
   },
-
   {
     name: "Jahnavi Dangeti",
     bio: "Aspiring astronaut & aerospace engineer.",
     img: jahnavi,
   },
-
   {
     name: "Punit Chawla",
     bio: "UX Designer & Digital Experience Innovator.",
@@ -92,7 +90,7 @@ const Speakers = () => {
               <motion.img
                 src={speaker.img || defaultImage}
                 alt={speaker.name}
-                className="w-full h-80 object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-80 object-cover object-center rounded-lg"
               />
 
               {/* Speaker Info Overlay */}

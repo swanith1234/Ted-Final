@@ -49,7 +49,7 @@ const Footer = () => {
                 <FaGlobe className="mr-2" />
                 <span>Website:</span>
                 <a
-                  href="https://tedxsrivenkateswarau.com"
+                  href="https://tedxsvu.in"
                   className="hover:underline ml-2"
                   target="_blank"
                   rel="noopener noreferrer"

@@ -120,6 +120,11 @@ const Hero = () => {
             </Link>
           </motion.div>
         </div>
+        {/* Spot Registration Info */}
+<p className="text-sm sm:text-base md:text-lg text-gray-300 mt-4 text-center max-w-xl mx-auto italic">
+  Still navigating your path? Online registrations are open, and for the spontaneous explorers—spot registrations will be available at the venue on April 13, 2025, from 8:00 AM to 10:00 AM.
+</p>
+
       </motion.div>
     </section>
   );
