@@ -17,7 +17,7 @@ const speakers = [
     img: abdus,
   },
   {
-    name: "Koushik",
+    name: " Chef Koushik",
     bio: "The Art and Science of Culinary Innovation.",
     img: koushik,
   },
