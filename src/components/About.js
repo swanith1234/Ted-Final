@@ -130,7 +130,7 @@ const About = () => {
                   key={index}
                   src={img}
                   alt={`Team Member ${index + 1}`}
-                  className="h-32 w-32 md:h-48 md:w-48 object-cover rounded-full mx-4 shadow-lg"
+                  className="h-32 w-32 md:h-48 md:w-48 object-cover rounded-full mx-4 shadow-lg grayscale-[90%] brightness-110 contrast-105 shadow-[0_0_20px_rgba(239,68,68,0.5)"
                 />
               ))}
             </div>
