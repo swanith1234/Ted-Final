@@ -7,6 +7,10 @@ import teamImage4 from "../assets/images/pragathi.jpg";
 import teamImage5 from "../assets/images/shakeer.jpg";
 import teamImage6 from "../assets/images/rampraveen.jpg";
 import teamImage7 from "../assets/images/yuva.jpg";
+import afroze from "../assets/images/Afroze.jpg";
+import swanith from "../assets/images/swanith.jpg";
+import Azeez from "../assets/images/Azeez.jpg";
+import Sathwika from "../assets/images/Sathwika.jpg";
 
 const teamImages = [
   teamImage1,
@@ -16,6 +20,9 @@ const teamImages = [
   teamImage5,
   teamImage6,
   teamImage7,
+  afroze,
+  swanith,
+  Sathwika,Azeez
 ];
 
 const About = () => {
