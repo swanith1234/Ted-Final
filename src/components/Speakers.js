@@ -11,6 +11,7 @@ import koushik from "../assets/images/koushik.jpg";
 import siddarth from "../assets/images/Siddarth.jpg";
 import pavani from "../assets/images/pavanikaranam.webp";
 import NVChakradhar from "../assets/images/NVChakradhar.jpeg";
+
 const speakers = [
   {
     name: "Abdus Samad",
@@ -97,12 +98,14 @@ const Speakers = () => {
               variants={cardVariants}
               whileHover={{ scale: 1.05 }}
             >
-              {/* Speaker Image */}
-              <motion.img
-                src={speaker.img || defaultImage}
-                alt={speaker.name}
-                className="w-full h-80 object-cover object-center rounded-lg"
-              />
+              {/* Image Container with fixed aspect ratio */}
+              <div className="relative w-full aspect-[3/4] bg-black overflow-hidden rounded-lg">
+                <motion.img
+                  src={speaker.img || defaultImage}
+                  alt={speaker.name}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </div>
 
               {/* Speaker Info Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
