@@ -9,8 +9,8 @@ import abdus from "../assets/images/abdus.jpeg";
 import punit from "../assets/images/punit.jpeg";
 import koushik from "../assets/images/koushik.jpg";
 import siddarth from "../assets/images/Siddarth.jpg";
-import pavani from "../assets/images/pavanikaranam.webp";
-import NVChakradhar from "../assets/images/NVChakradhar.jpeg";
+import pavani from "../assets/images/pavanikaranam.jpeg";
+import NVChakradhar from "../assets/images/NVChakradhar.jpg";
 
 const speakers = [
   {
@@ -25,7 +25,7 @@ const speakers = [
   },
   {
     name: "Jahnavi Dangeti",
-    bio: "Aspiring astronaut & aerospace engineer.",
+    bio: "Analog Astronaut ",
     img: jahnavi,
   },
   {
@@ -44,14 +44,14 @@ const speakers = [
     img: vidhya,
   },
   {
-    name: "Pavani Karanam",
-    bio: "Actress",
-    img: pavani,
-  },
-  {
     name: "NV Chakradhar",
     bio: "Senior Engineer incharge of Pambhan Bridge",
     img: NVChakradhar,
+  },
+  {
+    name: "Pavani Karanam",
+    bio: "Actress",
+    img: pavani,
   },
 ];
 
@@ -93,17 +93,24 @@ const Speakers = () => {
           {speakers.map((speaker, index) => (
             <motion.div
               key={index}
-              className="bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:shadow-red-600 transition duration-300"
+              className="group relative bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:shadow-red-600 transition duration-300"
               variants={cardVariants}
               whileHover={{ scale: 1.03 }}
             >
-              <img
-                src={speaker.img || defaultImage}
-                alt={speaker.name}
-                className="w-full h-72 object-cover object-center"
-              />
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold">{speaker.name}</h3>
+              {/* Image wrapper */}
+              <div className="relative w-full aspect-[4/5] overflow-hidden">
+                <img
+                  src={speaker.img || defaultImage}
+                  alt={speaker.name}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              {/* Info appears on hover */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+                <h3 className="text-lg font-semibold text-white">
+                  {speaker.name}
+                </h3>
                 <p className="text-sm text-gray-400">{speaker.bio}</p>
               </div>
             </motion.div>
