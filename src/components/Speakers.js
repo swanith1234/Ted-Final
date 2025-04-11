@@ -10,7 +10,7 @@ import punit from "../assets/images/punit.jpeg";
 import koushik from "../assets/images/koushik.jpg";
 import siddarth from "../assets/images/Siddarth.jpg";
 import pavani from "../assets/images/pavanikaranam.webp";
-import NVChakradhar from "../assets/images/NVChakradhar.jpg";
+import NVChakradhar from "../assets/images/NVChakradhar.jpeg";
 const speakers = [
   {
     name: "Abdus Samad",
