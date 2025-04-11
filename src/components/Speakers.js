@@ -94,12 +94,12 @@ const Speakers = () => {
           {speakers.map((speaker, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 transition-transform duration-300"
+              className="overflow-hidden rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 transition-transform duration-300"
               variants={cardVariants}
               whileHover={{ scale: 1.05 }}
             >
-              {/* Image Container with fixed aspect ratio */}
-              <div className="relative w-full aspect-[3/4] bg-black overflow-hidden rounded-lg">
+              {/* Image Container */}
+              <div className="relative w-full aspect-[3/4] bg-black overflow-hidden rounded-t-lg">
                 <motion.img
                   src={speaker.img || defaultImage}
                   alt={speaker.name}
@@ -107,12 +107,10 @@ const Speakers = () => {
                 />
               </div>
 
-              {/* Speaker Info Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-                <motion.div className="p-4 w-full text-center bg-black/50 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 className="text-lg font-bold">{speaker.name}</h3>
-                  <p className="text-sm text-gray-300">{speaker.bio}</p>
-                </motion.div>
+              {/* Speaker Info */}
+              <div className="bg-black p-4 text-center">
+                <h3 className="text-lg font-bold">{speaker.name}</h3>
+                <p className="text-sm text-gray-300">{speaker.bio}</p>
               </div>
             </motion.div>
           ))}
