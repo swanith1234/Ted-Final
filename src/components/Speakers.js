@@ -19,7 +19,7 @@ const speakers = [
     img: abdus,
   },
   {
-    name: " Chef Koushik",
+    name: "Chef Koushik",
     bio: "The Art and Science of Culinary Innovation.",
     img: koushik,
   },
@@ -45,11 +45,11 @@ const speakers = [
   },
   {
     name: "Pavani Karanam",
-    bio: "actress",
+    bio: "Actress",
     img: pavani,
   },
   {
-    name: "NV Chakradhar ",
+    name: "NV Chakradhar",
     bio: "Senior Engineer incharge of Pambhan Bridge",
     img: NVChakradhar,
   },
@@ -65,52 +65,46 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
+  hidden: { opacity: 0, scale: 0.95 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
 const Speakers = () => {
   return (
     <motion.section
-      className="bg-black text-white py-12 px-6"
+      className="bg-black text-white py-12 px-4 sm:px-6"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
     >
-      <div className="container mx-auto text-center">
+      <div className="max-w-6xl mx-auto text-center">
         <motion.h2
-          className="text-3xl sm:text-4xl text-red-600 font-bold mb-12"
+          className="text-3xl sm:text-4xl text-red-600 font-bold mb-10"
           variants={cardVariants}
         >
           Meet Our Speakers
         </motion.h2>
 
-        {/* Responsive Grid Layout */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
         >
           {speakers.map((speaker, index) => (
             <motion.div
               key={index}
-              className="overflow-hidden rounded-lg shadow-md group hover:shadow-lg hover:shadow-red-600 transition-transform duration-300"
+              className="bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:shadow-red-600 transition duration-300"
               variants={cardVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
             >
-              {/* Image Container */}
-              <div className="relative w-full aspect-[3/4] bg-black overflow-hidden rounded-t-lg">
-                <motion.img
-                  src={speaker.img || defaultImage}
-                  alt={speaker.name}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-              </div>
-
-              {/* Speaker Info */}
-              <div className="bg-black p-4 text-center">
-                <h3 className="text-lg font-bold">{speaker.name}</h3>
-                <p className="text-sm text-gray-300">{speaker.bio}</p>
+              <img
+                src={speaker.img || defaultImage}
+                alt={speaker.name}
+                className="w-full h-72 object-cover object-center"
+              />
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold">{speaker.name}</h3>
+                <p className="text-sm text-gray-400">{speaker.bio}</p>
               </div>
             </motion.div>
           ))}
