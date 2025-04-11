@@ -9,11 +9,12 @@ import abdus from "../assets/images/abdus.jpeg";
 import punit from "../assets/images/punit.jpeg";
 import koushik from "../assets/images/koushik.jpg";
 import siddarth from "../assets/images/Siddarth.jpg";
-
+import pavani from "../assets/images/pavanikaranam.webp";
+import NVChakradhar from "../assets/images/NVChakradhar.jpg";
 const speakers = [
   {
     name: "Abdus Samad",
-    bio: "Professor at IIT Madras, expert in marine energy.",
+    bio: "Professor at IIT Madras, expert in marine eonergy.",
     img: abdus,
   },
   {
@@ -40,6 +41,16 @@ const speakers = [
     name: "Vidhya Sagar",
     bio: "Product Manager & Innovation Leader.",
     img: vidhya,
+  },
+  {
+    name: "Pavani Karanam",
+    bio: "actress",
+    img: pavani,
+  },
+  {
+    name: "NV Chakradhar ",
+    bio: "Senior Engineer incharge of Pambhan Bridge",
+    img: NVChakradhar,
   },
 ];
 
